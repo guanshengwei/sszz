@@ -8,7 +8,6 @@ import java.io.Serializable;
  * @author gsw
  * @version $Id: SubJsonResult, v0.1
  * 
- * @date 2019年09月09日 4:51 PM 袁江南 Exp $
  */
 public class SubJsonResult implements Serializable {
 
