@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shunaier.demo.biz.dao.ComplaintOrderMapper">
+  <resultMap id="BaseResultMap" type="com.shunaier.demo.biz.model.bean.ComplaintOrder">
+    <id column="complaint_id" jdbcType="VARCHAR" property="complaintId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="app_id" jdbcType="VARCHAR" property="appId" />
+    <result column="app_name" jdbcType="VARCHAR" property="appName" />
+    <result column="app_name_view" jdbcType="VARCHAR" property="appNameView" />
+    <result column="complaint_merchant_id" jdbcType="VARCHAR" property="complaintMerchantId" />
+    <result column="complaint_merchant_name" jdbcType="VARCHAR" property="complaintMerchantName" />
+    <result column="complaint_product_id" jdbcType="VARCHAR" property="complaintProductId" />
+    <result column="complaint_product_name" jdbcType="VARCHAR" property="complaintProductName" />
+    <result column="complaint_type" jdbcType="INTEGER" property="complaintType" />
+    <result column="complaint_title" jdbcType="VARCHAR" property="complaintTitle" />
+    <result column="complaint_content" jdbcType="VARCHAR" property="complaintContent" />
+    <result column="assign_merchant_id" jdbcType="VARCHAR" property="assignMerchantId" />
+    <result column="assign_product_id" jdbcType="VARCHAR" property="assignProductId" />
+    <result column="complaint_state" jdbcType="INTEGER" property="complaintState" />
+    <result column="handle_result" jdbcType="VARCHAR" property="handleResult" />
+    <result column="plan_end_date" jdbcType="TIMESTAMP" property="planEndDate" />
+    <result column="actual_end_date" jdbcType="TIMESTAMP" property="actualEndDate" />
+    <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="modifier" jdbcType="VARCHAR" property="modifier" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    complaint_id, user_id, phone, app_id, app_name, app_name_view, complaint_merchant_id, 
+    complaint_merchant_name, complaint_product_id, complaint_product_name, complaint_type, 
+    complaint_title, complaint_content, assign_merchant_id, assign_product_id, complaint_state, 
+    handle_result, plan_end_date, actual_end_date, is_delete, creator, modifier, gmt_create, 
+    gmt_modify
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ps_complaint_order
+    where complaint_id = #{complaintId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from ps_complaint_order
+    where complaint_id = #{complaintId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.shunaier.demo.biz.model.bean.ComplaintOrder">
+    insert into ps_complaint_order (complaint_id, user_id, phone, 
+      app_id, app_name, app_name_view, 
+      complaint_merchant_id, complaint_merchant_name, 
+      complaint_product_id, complaint_product_name, 
+      complaint_type, complaint_title, complaint_content, 
+      assign_merchant_id, assign_product_id, complaint_state, 
+      handle_result, plan_end_date, actual_end_date, 
+      is_delete, creator, modifier, 
+      gmt_create, gmt_modify)
+    values (#{complaintId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{appId,jdbcType=VARCHAR}, #{appName,jdbcType=VARCHAR}, #{appNameView,jdbcType=VARCHAR}, 
+      #{complaintMerchantId,jdbcType=VARCHAR}, #{complaintMerchantName,jdbcType=VARCHAR}, 
+      #{complaintProductId,jdbcType=VARCHAR}, #{complaintProductName,jdbcType=VARCHAR}, 
+      #{complaintType,jdbcType=INTEGER}, #{complaintTitle,jdbcType=VARCHAR}, #{complaintContent,jdbcType=VARCHAR}, 
+      #{assignMerchantId,jdbcType=VARCHAR}, #{assignProductId,jdbcType=VARCHAR}, #{complaintState,jdbcType=INTEGER}, 
+      #{handleResult,jdbcType=VARCHAR}, #{planEndDate,jdbcType=TIMESTAMP}, #{actualEndDate,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=INTEGER}, #{creator,jdbcType=VARCHAR}, #{modifier,jdbcType=VARCHAR}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModify,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shunaier.demo.biz.model.bean.ComplaintOrder">
+    insert into ps_complaint_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="complaintId != null">
+        complaint_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="appName != null">
+        app_name,
+      </if>
+      <if test="appNameView != null">
+        app_name_view,
+      </if>
+      <if test="complaintMerchantId != null">
+        complaint_merchant_id,
+      </if>
+      <if test="complaintMerchantName != null">
+        complaint_merchant_name,
+      </if>
+      <if test="complaintProductId != null">
+        complaint_product_id,
+      </if>
+      <if test="complaintProductName != null">
+        complaint_product_name,
+      </if>
+      <if test="complaintType != null">
+        complaint_type,
+      </if>
+      <if test="complaintTitle != null">
+        complaint_title,
+      </if>
+      <if test="complaintContent != null">
+        complaint_content,
+      </if>
+      <if test="assignMerchantId != null">
+        assign_merchant_id,
+      </if>
+      <if test="assignProductId != null">
+        assign_product_id,
+      </if>
+      <if test="complaintState != null">
+        complaint_state,
+      </if>
+      <if test="handleResult != null">
+        handle_result,
+      </if>
+      <if test="planEndDate != null">
+        plan_end_date,
+      </if>
+      <if test="actualEndDate != null">
+        actual_end_date,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="modifier != null">
+        modifier,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModify != null">
+        gmt_modify,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="complaintId != null">
+        #{complaintId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="appName != null">
+        #{appName,jdbcType=VARCHAR},
+      </if>
+      <if test="appNameView != null">
+        #{appNameView,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintMerchantId != null">
+        #{complaintMerchantId,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintMerchantName != null">
+        #{complaintMerchantName,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintProductId != null">
+        #{complaintProductId,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintProductName != null">
+        #{complaintProductName,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintType != null">
+        #{complaintType,jdbcType=INTEGER},
+      </if>
+      <if test="complaintTitle != null">
+        #{complaintTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContent != null">
+        #{complaintContent,jdbcType=VARCHAR},
+      </if>
+      <if test="assignMerchantId != null">
+        #{assignMerchantId,jdbcType=VARCHAR},
+      </if>
+      <if test="assignProductId != null">
+        #{assignProductId,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintState != null">
+        #{complaintState,jdbcType=INTEGER},
+      </if>
+      <if test="handleResult != null">
+        #{handleResult,jdbcType=VARCHAR},
+      </if>
+      <if test="planEndDate != null">
+        #{planEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actualEndDate != null">
+        #{actualEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null">
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null">
+        #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shunaier.demo.biz.model.bean.ComplaintOrder">
+    update ps_complaint_order
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="appName != null">
+        app_name = #{appName,jdbcType=VARCHAR},
+      </if>
+      <if test="appNameView != null">
+        app_name_view = #{appNameView,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintMerchantId != null">
+        complaint_merchant_id = #{complaintMerchantId,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintMerchantName != null">
+        complaint_merchant_name = #{complaintMerchantName,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintProductId != null">
+        complaint_product_id = #{complaintProductId,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintProductName != null">
+        complaint_product_name = #{complaintProductName,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintType != null">
+        complaint_type = #{complaintType,jdbcType=INTEGER},
+      </if>
+      <if test="complaintTitle != null">
+        complaint_title = #{complaintTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContent != null">
+        complaint_content = #{complaintContent,jdbcType=VARCHAR},
+      </if>
+      <if test="assignMerchantId != null">
+        assign_merchant_id = #{assignMerchantId,jdbcType=VARCHAR},
+      </if>
+      <if test="assignProductId != null">
+        assign_product_id = #{assignProductId,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintState != null">
+        complaint_state = #{complaintState,jdbcType=INTEGER},
+      </if>
+      <if test="handleResult != null">
+        handle_result = #{handleResult,jdbcType=VARCHAR},
+      </if>
+      <if test="planEndDate != null">
+        plan_end_date = #{planEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actualEndDate != null">
+        actual_end_date = #{actualEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null">
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null">
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where complaint_id = #{complaintId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shunaier.demo.biz.model.bean.ComplaintOrder">
+    update ps_complaint_order
+    set user_id = #{userId,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      app_id = #{appId,jdbcType=VARCHAR},
+      app_name = #{appName,jdbcType=VARCHAR},
+      app_name_view = #{appNameView,jdbcType=VARCHAR},
+      complaint_merchant_id = #{complaintMerchantId,jdbcType=VARCHAR},
+      complaint_merchant_name = #{complaintMerchantName,jdbcType=VARCHAR},
+      complaint_product_id = #{complaintProductId,jdbcType=VARCHAR},
+      complaint_product_name = #{complaintProductName,jdbcType=VARCHAR},
+      complaint_type = #{complaintType,jdbcType=INTEGER},
+      complaint_title = #{complaintTitle,jdbcType=VARCHAR},
+      complaint_content = #{complaintContent,jdbcType=VARCHAR},
+      assign_merchant_id = #{assignMerchantId,jdbcType=VARCHAR},
+      assign_product_id = #{assignProductId,jdbcType=VARCHAR},
+      complaint_state = #{complaintState,jdbcType=INTEGER},
+      handle_result = #{handleResult,jdbcType=VARCHAR},
+      plan_end_date = #{planEndDate,jdbcType=TIMESTAMP},
+      actual_end_date = #{actualEndDate,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=VARCHAR},
+      modifier = #{modifier,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP}
+    where complaint_id = #{complaintId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="getByComplaintIdList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ps_complaint_order
+    where complaint_id in
+    <foreach collection="complaintIdList" item="item" index="index"
+             open="(" close=")" separator=",">
+      #{item}
+    </foreach>
+  </select>
+
+  <select id="findList" parameterType="com.shunaier.demo.biz.model.param.ComplaintOrderQuery" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ps_complaint_order
+    <where>
+      is_delete = 0
+    </where>
+  </select>
+
+</mapper>
